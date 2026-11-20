@@ -1,0 +1,653 @@
+{
+  "profile": {
+    "editors": [
+      {
+        "id": "cal_dow",
+        "ranges": [
+          {
+            "uom": "25",
+            "subset": "0,1,2,3,4,5,6",
+            "names": {
+              "0": "Monday",
+              "1": "Tuesday",
+              "2": "Wednesday",
+              "3": "Thursday",
+              "4": "Friday",
+              "5": "Saturday",
+              "6": "Sunday"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cal_yesno",
+        "ranges": [
+          {
+            "uom": "25",
+            "subset": "0,1",
+            "names": {
+              "0": "No",
+              "1": "Yes"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cal_oddeven",
+        "ranges": [
+          {
+            "uom": "25",
+            "subset": "0,1",
+            "names": {
+              "0": "Even",
+              "1": "Odd"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cal_season",
+        "ranges": [
+          {
+            "uom": "25",
+            "subset": "0,1,2,3",
+            "names": {
+              "0": "Winter",
+              "1": "Spring",
+              "2": "Summer",
+              "3": "Fall"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cal_ordinal",
+        "ranges": [
+          {
+            "uom": "25",
+            "subset": "1,2,3,4,5",
+            "names": {
+              "1": "1st",
+              "2": "2nd",
+              "3": "3rd",
+              "4": "4th",
+              "5": "5th"
+            }
+          }
+        ]
+      },
+      {
+        "id": "cal_dom",
+        "ranges": [
+          {
+            "uom": "9",
+            "min": 1,
+            "max": 31,
+            "step": 1,
+            "prec": 0
+          }
+        ]
+      },
+      {
+        "id": "cal_month",
+        "ranges": [
+          {
+            "uom": "47",
+            "min": 1,
+            "max": 12,
+            "step": 1,
+            "prec": 0
+          }
+        ]
+      },
+      {
+        "id": "cal_monthnum",
+        "ranges": [
+          {
+            "uom": "56",
+            "min": 1,
+            "max": 12,
+            "step": 1,
+            "prec": 0
+          }
+        ]
+      },
+      {
+        "id": "cal_year",
+        "ranges": [
+          {
+            "uom": "77",
+            "min": 1970,
+            "max": 2200,
+            "step": 1,
+            "prec": 0
+          }
+        ]
+      },
+      {
+        "id": "cal_doy",
+        "ranges": [
+          {
+            "uom": "56",
+            "min": 1,
+            "max": 366,
+            "step": 1,
+            "prec": 0
+          }
+        ]
+      },
+      {
+        "id": "cal_week",
+        "ranges": [
+          {
+            "uom": "56",
+            "min": 1,
+            "max": 53,
+            "step": 1,
+            "prec": 0
+          }
+        ]
+      },
+      {
+        "id": "cal_untildays",
+        "ranges": [
+          {
+            "uom": "56",
+            "min": 0,
+            "max": 4000,
+            "step": 1,
+            "prec": 0
+          }
+        ]
+      },
+      {
+        "id": "cal_daysleft",
+        "ranges": [
+          {
+            "uom": "56",
+            "min": 0,
+            "max": 366,
+            "step": 1,
+            "prec": 0
+          }
+        ]
+      },
+      {
+        "id": "cal_monthdays",
+        "ranges": [
+          {
+            "uom": "56",
+            "min": 28,
+            "max": 31,
+            "step": 1,
+            "prec": 0
+          }
+        ]
+      },
+      {
+        "id": "cal_clock_hour",
+        "ranges": [
+          {
+            "uom": "56",
+            "min": 0,
+            "max": 23,
+            "step": 1,
+            "prec": 0
+          }
+        ]
+      },
+      {
+        "id": "cal_clock_min",
+        "ranges": [
+          {
+            "uom": "56",
+            "min": 0,
+            "max": 59,
+            "step": 1,
+            "prec": 0
+          }
+        ]
+      },
+      {
+        "id": "ED_CONTROLLER_ST",
+        "ranges": [
+          {
+            "subset": "0,1",
+            "uom": "25",
+            "names": {
+              "0": "Not Connected",
+              "1": "Connected"
+            }
+          }
+        ]
+      }
+    ],
+    "nodedefs": [
+      {
+        "id": "controller",
+        "name": "Calendar",
+        "properties": [
+          {
+            "id": "ST",
+            "name": "Status",
+            "editor": "ED_CONTROLLER_ST"
+          }
+        ],
+        "cmds": {
+          "sends": [],
+          "accepts": [
+            {
+              "id": "DISCOVER",
+              "name": "Rebuild Nodes",
+              "native": "true"
+            },
+            {
+              "id": "QUERY",
+              "name": "Query",
+              "native": "true"
+            }
+          ]
+        },
+        "links": {
+          "ctl": [],
+          "rsp": []
+        }
+      },
+      {
+        "id": "caltoday",
+        "name": "Calendar Today",
+        "properties": [
+          {
+            "id": "ST",
+            "name": "Day of Week",
+            "editor": "cal_dow"
+          },
+          {
+            "id": "DAY_OF_MONTH",
+            "name": "Day of Month",
+            "editor": "cal_dom"
+          },
+          {
+            "id": "MONTH",
+            "name": "Month",
+            "editor": "cal_month"
+          },
+          {
+            "id": "MONTH_NUM",
+            "name": "Month Number",
+            "editor": "cal_monthnum"
+          },
+          {
+            "id": "YEAR",
+            "name": "Year",
+            "editor": "cal_year"
+          },
+          {
+            "id": "DAY_OF_YEAR",
+            "name": "Day of Year",
+            "editor": "cal_doy"
+          },
+          {
+            "id": "ISO_WEEK",
+            "name": "ISO Week Number",
+            "editor": "cal_week"
+          },
+          {
+            "id": "ISO_WEEK_PARITY",
+            "name": "ISO Week Odd/Even",
+            "editor": "cal_oddeven"
+          },
+          {
+            "id": "LAST_FULL_WEEK",
+            "name": "Last Full Mon-Fri Week",
+            "editor": "cal_yesno"
+          },
+          {
+            "id": "IS_WEEKEND",
+            "name": "Weekend",
+            "editor": "cal_yesno"
+          },
+          {
+            "id": "LEAP_YEAR",
+            "name": "Leap Year",
+            "editor": "cal_yesno"
+          },
+          {
+            "id": "SEASON",
+            "name": "Season",
+            "editor": "cal_season"
+          },
+          {
+            "id": "DAYS_LEFT_MONTH",
+            "name": "Days Left in Month",
+            "editor": "cal_daysleft"
+          },
+          {
+            "id": "DAYS_LEFT_YEAR",
+            "name": "Days Left in Year",
+            "editor": "cal_daysleft"
+          }
+        ],
+        "cmds": {
+          "sends": [],
+          "accepts": []
+        },
+        "links": {
+          "ctl": [],
+          "rsp": []
+        }
+      },
+      {
+        "id": "caltomorrow",
+        "name": "Calendar Tomorrow",
+        "properties": [
+          {
+            "id": "ST",
+            "name": "Day of Week",
+            "editor": "cal_dow"
+          },
+          {
+            "id": "DAY_OF_MONTH",
+            "name": "Day of Month",
+            "editor": "cal_dom"
+          },
+          {
+            "id": "MONTH",
+            "name": "Month",
+            "editor": "cal_month"
+          },
+          {
+            "id": "MONTH_NUM",
+            "name": "Month Number",
+            "editor": "cal_monthnum"
+          },
+          {
+            "id": "YEAR",
+            "name": "Year",
+            "editor": "cal_year"
+          },
+          {
+            "id": "DAY_OF_YEAR",
+            "name": "Day of Year",
+            "editor": "cal_doy"
+          },
+          {
+            "id": "ISO_WEEK",
+            "name": "ISO Week Number",
+            "editor": "cal_week"
+          },
+          {
+            "id": "LAST_FULL_WEEK",
+            "name": "Last Full Mon-Fri Week",
+            "editor": "cal_yesno"
+          },
+          {
+            "id": "IS_WEEKEND",
+            "name": "Weekend",
+            "editor": "cal_yesno"
+          },
+          {
+            "id": "LEAP_YEAR",
+            "name": "Leap Year",
+            "editor": "cal_yesno"
+          },
+          {
+            "id": "SEASON",
+            "name": "Season",
+            "editor": "cal_season"
+          }
+        ],
+        "cmds": {
+          "sends": [],
+          "accepts": []
+        },
+        "links": {
+          "ctl": [],
+          "rsp": []
+        }
+      },
+      {
+        "id": "calmonth",
+        "name": "Calendar Month Info",
+        "properties": [
+          {
+            "id": "ST",
+            "name": "Days in Month",
+            "editor": "cal_monthdays"
+          },
+          {
+            "id": "YEAR",
+            "name": "Current Year",
+            "editor": "cal_year"
+          },
+          {
+            "id": "FIRST_WEEKDAY",
+            "name": "First Day Weekday",
+            "editor": "cal_dow"
+          },
+          {
+            "id": "LAST_WEEKDAY",
+            "name": "Last Day Weekday",
+            "editor": "cal_dow"
+          },
+          {
+            "id": "IS_FIRST_DAY",
+            "name": "Today Is First Day of Month",
+            "editor": "cal_yesno"
+          },
+          {
+            "id": "IS_LAST_DAY",
+            "name": "Today Is Last Day of Month",
+            "editor": "cal_yesno"
+          },
+          {
+            "id": "IS_LAST_BUSDAY",
+            "name": "Today Is Last Business Day",
+            "editor": "cal_yesno"
+          }
+        ],
+        "cmds": {
+          "sends": [],
+          "accepts": []
+        },
+        "links": {
+          "ctl": [],
+          "rsp": []
+        }
+      },
+      {
+        "id": "calweekday",
+        "name": "Calendar Weekday Instance",
+        "properties": [
+          {
+            "id": "ST",
+            "name": "Instance in Month",
+            "editor": "cal_ordinal"
+          },
+          {
+            "id": "WEEKDAY",
+            "name": "Weekday",
+            "editor": "cal_dow"
+          },
+          {
+            "id": "IS_LAST_INST",
+            "name": "Last of Its Weekday This Month",
+            "editor": "cal_yesno"
+          }
+        ],
+        "cmds": {
+          "sends": [],
+          "accepts": []
+        },
+        "links": {
+          "ctl": [],
+          "rsp": []
+        }
+      },
+      {
+        "id": "caltime",
+        "name": "Calendar Time",
+        "properties": [
+          {
+            "id": "ST",
+            "name": "Hour",
+            "editor": "cal_clock_hour"
+          },
+          {
+            "id": "MINUTE",
+            "name": "Minute",
+            "editor": "cal_clock_min"
+          },
+          {
+            "id": "SUNRISE_HOUR",
+            "name": "Sunrise Hour",
+            "editor": "cal_clock_hour"
+          },
+          {
+            "id": "SUNRISE_MIN",
+            "name": "Sunrise Minute",
+            "editor": "cal_clock_min"
+          },
+          {
+            "id": "SUNSET_HOUR",
+            "name": "Sunset Hour",
+            "editor": "cal_clock_hour"
+          },
+          {
+            "id": "SUNSET_MIN",
+            "name": "Sunset Minute",
+            "editor": "cal_clock_min"
+          }
+        ],
+        "cmds": {
+          "sends": [],
+          "accepts": []
+        },
+        "links": {
+          "ctl": [],
+          "rsp": []
+        }
+      },
+      {
+        "id": "calrule",
+        "name": "Calendar Weekday Pattern",
+        "properties": [
+          {
+            "id": "ST",
+            "name": "Is Today",
+            "editor": "cal_yesno"
+          },
+          {
+            "id": "IS_TOMORROW",
+            "name": "Is Tomorrow",
+            "editor": "cal_yesno"
+          },
+          {
+            "id": "DAYS_UNTIL",
+            "name": "Days Until Next",
+            "editor": "cal_untildays"
+          },
+          {
+            "id": "NEXT_DAY",
+            "name": "Next Day of Month",
+            "editor": "cal_dom"
+          },
+          {
+            "id": "NEXT_MONTH",
+            "name": "Next Month",
+            "editor": "cal_month"
+          },
+          {
+            "id": "NEXT_YEAR",
+            "name": "Next Year",
+            "editor": "cal_year"
+          }
+        ],
+        "cmds": {
+          "sends": [],
+          "accepts": []
+        },
+        "links": {
+          "ctl": [],
+          "rsp": []
+        }
+      }
+    ],
+    "linkdefs": []
+  },
+  "server_entry": {
+    "name": "Calendar",
+    "desc": "Gregorian calendar information as nodes: Today, Tomorrow, Month Info, Weekday Instance (e.g. 2nd Wednesday of the month), Time (clock plus the hub's own sunrise and sunset), plus user-defined Nth-weekday pattern nodes (e.g. 2nd Tuesday of the month, last Friday of the month, 4th Thursday of November).",
+    "type": "python3",
+    "discover": true,
+    "isyAccess": true,
+    "requireEisyui": false,
+    "shortPoll": 10,
+    "longPoll": 300
+  },
+  "readme_body": "Exposes information about the regular (Gregorian) calendar and the time of day as nodes, computed locally from the hub's clock. Sunrise and sunset are read from the hub itself. No cloud service, account or API key.\n\n## Nodes\n\n- **Calendar Today** -- day of week, day of month, month (shown by name), month number (1-12), year, day of year, ISO week number, ISO week odd/even, last full Mon-Fri week of the month, weekend flag, leap-year flag, season, days left in the month and year (these two are plain numbers with no unit label, e.g. `19`, not `19 days`, for use in numeric comparisons).\n- **Calendar Tomorrow** -- the same date information for tomorrow (handy for \"is tomorrow a weekend / the 1st?\" in programs), including month number and last full Mon-Fri week.\n- **Calendar Month Info** -- days in the month (a plain number, e.g. `30`), current year, weekday of the first and last day, and flags for first day, last day and last business day (last Monday-Friday) of the month.\n- **Calendar Weekday Instance** -- which instance of today's weekday this is within the month (1st to 5th), the weekday itself, and whether it is the last of that weekday this month. For example, Wednesday November 11, 2026 is the 2nd Wednesday.\n- **Calendar Time** (node name **Time**) -- the current **Hour** (0-23) and **Minute**, plus the hub's own **Sunrise Hour / Sunrise Minute** and **Sunset Hour / Sunset Minute** for today (24-hour clock, local time). All of these are plain numbers with no unit label (for example `10`, not `10 Hour`), so they can be used directly in numeric comparisons in programs.\n- **Weekday Pattern nodes (Nth weekday)** -- one node per pattern you define, e.g. \"2nd Tuesday of every month\", \"last Friday of the month\" or \"4th Thursday of November\". Each node reports *Is Today*, *Is Tomorrow*, *Days Until Next* (a plain number, 0 on the day itself), and the date of the next occurrence (day, month, year).\n\n## Configuration\n\nOpen the plugin's configuration page:\n\n- **Southern Hemisphere** -- reverses the seasons for the Season property.\n- **Weekday Patterns** -- a list. Each entry has a **Pattern Name** (becomes the node name), **Which Occurrence** (first/second/third/fourth/last), **Weekday**, and optional **Month** (\"any\" for every month, or a month name/number). Pattern nodes are added, renamed or removed automatically when you save. Entries that cannot be understood are skipped and explained in a notice on the configuration page.\n\n## Notes\n\n- Dates use the local time zone of the hub. Values refresh when the date changes and at least every 5 minutes.\n- The **Rebuild Nodes** command re-creates any missing nodes.\n- Days of the week run Monday-Sunday. Season boundaries are the astronomical ones (about Mar 20 / Jun 21 / Sep 22 / Dec 21).\n- **Month** uses the hub's built-in month unit, so the console shows the month name (e.g. November). **Month Number** reports the same month as a plain number from 1 to 12 (November = 11), handy for numeric comparisons and ranges in programs. Both are on Today and Tomorrow (Month Number on Tomorrow is tomorrow's month, so it changes on the last day of a month).\n- **Days Left in Month** and **Days Left in Year** on the Today node, **Days in Month** on the Month Info node, and **Days Until Next** on the pattern nodes are reported in the hub's \"Raw\" unit, so they show as bare numbers (Days Left is 0 on the last day of the month / year; Days Until Next is 0 when the pattern falls today). No property shows a \"days\" label.\n- **Current Year** on the Month Info node is the calendar year of today's date (e.g. 2026), the same value as Year on the Today node.\n- **ISO Week Odd/Even** follows the ISO week number exactly (odd number = Odd). Some years have 53 ISO weeks; in those years week 53 and week 1 of the next year are both Odd, so two Odd weeks occur back to back (e.g. Dec 28, 2026 - Jan 10, 2027).\n- **Last Full Mon-Fri Week** is Yes on the five weekdays (Monday to Friday) of the last week in a month whose Monday to Friday all fall inside that month. Only the weekdays count: Saturday and Sunday are always No. For example, in November 2026 it is Yes Monday Nov 23 through Friday Nov 27. The week of Nov 30 - Dec 4 is not entirely within one month, so it is No. A month that ends on a Friday counts that week (April 2027: Apr 26-30). On the Tomorrow node it reports the value for tomorrow's date, so it is Yes on Sunday Nov 22 (tomorrow is Monday Nov 23) and No on Friday Nov 27 (tomorrow is Saturday).\n- **Time node: clock.** Hour and Minute use the hub's time zone and are reported as plain numbers (the hub's \"Raw\" unit), with no \"Hour\"/\"Minute\" label. The plugin refreshes every 10 seconds, so Minute can change up to about 10 seconds after the real clock rolls over; only changed values are sent to the hub. There is no seconds property.\n- **Time node: sunrise and sunset.** These are the hub's own calculated values (the same ones its schedules use), read from the hub's `/rest/time` once a day and converted to the hub's local time zone. Minutes are truncated (5:43:41 shows as 5:43). The plugin needs access to the hub for this (`isyAccess`), which is enabled in its registration. If the hub can't be read, a notice appears on the configuration page, the plugin retries every minute, and the four sun properties keep their last value (0 until the first successful read).\n- A pattern renamed to a different name becomes a new node (the old one is removed), so programs referencing it need updating.\n\n## Upgrading from an older version\n\nPolyglot (PG3) stores each node's property units when the node is first created, and the plugin library copies those stored units over what the plugin declares. So a unit or property change in a new plugin version would never reach nodes that already exist. Since 1.12.0 the plugin always reports its own declared units, and when it starts it also checks its nodes (Today, Tomorrow, Month Info, Weekday Instance, Time and, since 1.14.0, every configured pattern node): any whose stored definition is out of date (a different unit, or a property that no longer exists, such as the old Time *Second*) is deleted and re-added automatically, once per definition revision. A small marker file (`persist/node_defs.json`) stops this from repeating. Programs that use properties of a re-added node need those conditions re-selected.\n",
+  "override_bodies": {
+    "start": "    def start(self):\n        import cal_ctl\n        cal_ctl.start(self)\n",
+    "stop": "    def stop(self, *args, **kwargs):\n        LOGGER.info(\"%s: stopping\", self.name)\n",
+    "discover": "    def discover(self, *args, **kwargs):\n        import cal_ctl\n        cal_ctl.rebuild(self)\n",
+    "query": "    def query(self, *args, **kwargs):\n        import cal_ctl\n        cal_ctl.update_all(self)\n",
+    "shortPoll": "    def shortPoll(self, *args, **kwargs):\n        import cal_ctl\n        cal_ctl.short_poll(self)\n",
+    "longPoll": "    def longPoll(self, *args, **kwargs):\n        import cal_ctl\n        if getattr(self, '_cal_started', False):\n            cal_ctl.update_all(self)\n",
+    "customTypedDataHandler": "    def customTypedDataHandler(self, custom_params):\n        import cal_ctl\n        self.CustomTypedData.load(custom_params)\n        cal_ctl.set_typed(self, custom_params)\n"
+  },
+  "node_classes": {
+    "cal_utils": "\"\"\"Pure calendar helpers for the Calendar plugin.\n\nNo udi_interface dependency, so everything here is unit-testable on its own.\nNote: weekdays follow Python's convention, Monday = 0 ... Sunday = 6.\n\"\"\"\nimport base64\nimport calendar as _pycal\nimport datetime as _dt\nimport json\nimport os\nimport re\nimport ssl\nimport threading\nimport urllib.request\nimport xml.etree.ElementTree as _ET\nimport zoneinfo\n\nLOCK = threading.RLock()\n\nWEEKDAYS = {\n    'monday': 0, 'mon': 0,\n    'tuesday': 1, 'tue': 1, 'tues': 1,\n    'wednesday': 2, 'wed': 2,\n    'thursday': 3, 'thu': 3, 'thur': 3, 'thurs': 3,\n    'friday': 4, 'fri': 4,\n    'saturday': 5, 'sat': 5,\n    'sunday': 6, 'sun': 6,\n}\n\nOCCURRENCES = {\n    '1': 1, '1st': 1, 'first': 1,\n    '2': 2, '2nd': 2, 'second': 2,\n    '3': 3, '3rd': 3, 'third': 3,\n    '4': 4, '4th': 4, 'fourth': 4,\n    '5': 5, 'last': 5,\n}\n\nMONTHS = {\n    'january': 1, 'jan': 1, 'february': 2, 'feb': 2, 'march': 3, 'mar': 3,\n    'april': 4, 'apr': 4, 'may': 5, 'june': 6, 'jun': 6, 'july': 7, 'jul': 7,\n    'august': 8, 'aug': 8, 'september': 9, 'sep': 9, 'sept': 9,\n    'october': 10, 'oct': 10, 'november': 11, 'nov': 11, 'december': 12, 'dec': 12,\n}\n\nANY_MONTH = ('', 'any', '*', 'all', 'every', 'each')\n\n\ndef _norm(value):\n    if value is None:\n        return ''\n    if isinstance(value, float) and value.is_integer():\n        value = int(value)\n    return str(value).strip().lower().rstrip('.')\n\n\ndef parse_weekday(value):\n    \"\"\"Name/abbreviation -> 0..6, or None if not understood.\"\"\"\n    return WEEKDAYS.get(_norm(value))\n\n\ndef parse_occurrence(value):\n    \"\"\"first..fourth -> 1..4, last -> 5, or None if not understood.\"\"\"\n    return OCCURRENCES.get(_norm(value))\n\n\ndef parse_month(value):\n    \"\"\"'any'/blank -> 0, month name or 1..12 -> 1..12, or None if not understood.\"\"\"\n    v = _norm(value)\n    if v in ANY_MONTH:\n        return 0\n    if v in MONTHS:\n        return MONTHS[v]\n    if v.isdigit() and 1 <= int(v) <= 12:\n        return int(v)\n    return None\n\n\ndef occurrence_date(year, month, weekday, occ):\n    \"\"\"Date of the occ-th (1..4) or last (5) given weekday in a month.\"\"\"\n    if occ == 5:\n        last = _dt.date(year, month, _pycal.monthrange(year, month)[1])\n        return last - _dt.timedelta(days=(last.weekday() - weekday) % 7)\n    first = _dt.date(year, month, 1)\n    offset = (weekday - first.weekday()) % 7\n    return _dt.date(year, month, 1 + offset + 7 * (occ - 1))\n\n\ndef next_occurrence(pattern, start):\n    \"\"\"First date on or after `start` matching the pattern, or None.\"\"\"\n    y, m = start.year, start.month\n    for _ in range(30):\n        if not pattern['month'] or pattern['month'] == m:\n            d = occurrence_date(y, m, pattern['weekday'], pattern['occ'])\n            if d >= start:\n                return d\n        m += 1\n        if m > 12:\n            m = 1\n            y += 1\n    return None\n\n\ndef season(d, southern=False):\n    \"\"\"0 Winter, 1 Spring, 2 Summer, 3 Fall (astronomical, northern by default).\"\"\"\n    md = (d.month, d.day)\n    if md >= (12, 21) or md < (3, 20):\n        s = 0\n    elif md < (6, 21):\n        s = 1\n    elif md < (9, 22):\n        s = 2\n    else:\n        s = 3\n    return (s + 2) % 4 if southern else s\n\n\ndef is_last_business_day(d):\n    last = _dt.date(d.year, d.month, _pycal.monthrange(d.year, d.month)[1])\n    while last.weekday() >= 5:\n        last -= _dt.timedelta(days=1)\n    return d == last\n\n\ndef iso_week_parity(d):\n    \"\"\"1 if the ISO week number of date d is odd, 0 if even.\n\n    Follows the ISO week number exactly, so in a 53-week year week 53 and week 1\n    of the following year are both odd (two odd weeks in a row).\n    \"\"\"\n    return d.isocalendar()[1] % 2\n\n\ndef is_last_full_week(d):\n    \"\"\"1 if date d is a weekday (Mon-Fri) in the last full Mon-Fri week of its month.\n\n    Only the five weekdays matter. A week is 'full' for a month when its Monday\n    through Friday all fall inside that month; the last such week of the month is\n    the 'last full Mon-Fri week'. Saturday and Sunday are always 0, and a week\n    whose Monday-Friday straddles two months is not full for either month.\n    \"\"\"\n    if d.weekday() >= 5:\n        return 0\n    monday = d - _dt.timedelta(days=d.weekday())\n    friday = monday + _dt.timedelta(days=4)\n    if monday.month != friday.month:\n        return 0\n    mdays = _pycal.monthrange(monday.year, monday.month)[1]\n    return int(monday.day + 7 + 4 > mdays)\n\n\ndef day_info(d, southern=False):\n    \"\"\"Driver values describing one calendar date.\"\"\"\n    leap = _pycal.isleap(d.year)\n    doy = d.timetuple().tm_yday\n    mdays = _pycal.monthrange(d.year, d.month)[1]\n    return {\n        'ST': d.weekday(),\n        'DAY_OF_MONTH': d.day,\n        'MONTH': d.month,\n        'MONTH_NUM': d.month,\n        'YEAR': d.year,\n        'DAY_OF_YEAR': doy,\n        'ISO_WEEK': d.isocalendar()[1],\n        'ISO_WEEK_PARITY': iso_week_parity(d),\n        'LAST_FULL_WEEK': is_last_full_week(d),\n        'IS_WEEKEND': int(d.weekday() >= 5),\n        'LEAP_YEAR': int(leap),\n        'SEASON': season(d, southern),\n        'DAYS_LEFT_MONTH': mdays - d.day,\n        'DAYS_LEFT_YEAR': (366 if leap else 365) - doy,\n    }\n\n\ndef month_info(d):\n    \"\"\"Driver values describing the month containing date d (d is 'today').\"\"\"\n    mdays = _pycal.monthrange(d.year, d.month)[1]\n    return {\n        'ST': mdays,\n        'YEAR': d.year,\n        'FIRST_WEEKDAY': _dt.date(d.year, d.month, 1).weekday(),\n        'LAST_WEEKDAY': _dt.date(d.year, d.month, mdays).weekday(),\n        'IS_FIRST_DAY': int(d.day == 1),\n        'IS_LAST_DAY': int(d.day == mdays),\n        'IS_LAST_BUSDAY': int(is_last_business_day(d)),\n    }\n\n\ndef weekday_instance_info(d):\n    \"\"\"Which instance (1..5) of its weekday date d is within its month.\n\n    e.g. 2026-11-11 is the 2nd Wednesday of November. Also flags whether it is\n    the last of that weekday in the month (no later same weekday this month).\n    \"\"\"\n    mdays = _pycal.monthrange(d.year, d.month)[1]\n    return {\n        'ST': (d.day - 1) // 7 + 1,\n        'WEEKDAY': d.weekday(),\n        'IS_LAST_INST': int(d.day + 7 > mdays),\n    }\n\n\ndef pattern_info(pattern, today):\n    \"\"\"Driver values for one weekday pattern. Returns {} if no occurrence found.\"\"\"\n    tomorrow = today + _dt.timedelta(days=1)\n    nxt = next_occurrence(pattern, today)\n    if nxt is None:\n        return {}\n    return {\n        'ST': int(nxt == today),\n        'IS_TOMORROW': int(next_occurrence(pattern, tomorrow) == tomorrow),\n        'DAYS_UNTIL': (nxt - today).days,\n        'NEXT_DAY': nxt.day,\n        'NEXT_MONTH': nxt.month,\n        'NEXT_YEAR': nxt.year,\n    }\n\n\n# ---------------------------------------------------------------------------\n# Time node: clock + the hub's own sunrise/sunset\n# ---------------------------------------------------------------------------\n\nSUN_RETRY_SECS = 60     # minimum gap between attempts to read the hub\nSUN_MAX_ATTEMPTS = 5    # successful reads per day that still return a stale (not-today) sunrise\n\n\ndef get_tz(name):\n    \"\"\"ZoneInfo for an IANA name, or None (meaning: use the system's local time).\"\"\"\n    if name:\n        try:\n            return zoneinfo.ZoneInfo(name)\n        except Exception:\n            return None\n    return None\n\n\ndef now_in(tz):\n    \"\"\"Current time in tz (or naive system-local time when tz is None).\"\"\"\n    return _dt.datetime.now(tz) if tz else _dt.datetime.now()\n\n\ndef epoch_to_local(epoch, tz):\n    \"\"\"Unix epoch seconds -> datetime in tz (or naive system-local time when tz is None).\"\"\"\n    return _dt.datetime.fromtimestamp(epoch, tz) if tz else _dt.datetime.fromtimestamp(epoch)\n\n\ndef parse_hub_time(text):\n    \"\"\"Parse the hub's /rest/time XML.\n\n    Returns {'tz': IANA name or None, 'sunrise': unix epoch or None, 'sunset': unix epoch or None},\n    or None when the text is not parseable XML. Only the *GMT fields are used: they are real\n    Unix epochs, unlike the plain Sunrise/Sunset fields (NTP-epoch, shifted by the local offset).\n    \"\"\"\n    try:\n        root = _ET.fromstring(text)\n    except Exception:\n        return None\n    raw = {el.tag: (el.text or '').strip() for el in root.iter()}\n\n    def _epoch(key):\n        try:\n            v = int(raw.get(key, ''))\n        except (TypeError, ValueError):\n            return None\n        return v if v > 0 else None\n\n    return {'tz': raw.get('TzId') or None,\n            'sunrise': _epoch('SunriseGMT'),\n            'sunset': _epoch('SunsetGMT')}\n\n\ndef fetch_hub_time(info, timeout=10):\n    \"\"\"GET /rest/time from the hub using the connection info Polyglot hands the plugin.\n\n    `info` is the ISY event payload (isy_ip_address, isy_port, isy_https, isy_username and the\n    matching secret). The hub uses a self-signed certificate, so https is not verified (same as\n    nucore-ai's own client). Returns the response body text; raises on any failure.\n    \"\"\"\n    scheme = 'https' if info.get('isy_https') == 1 else 'http'\n    url = '%s://%s:%s/rest/time' % (scheme, info['isy_ip_address'], info['isy_port'])\n    cred = ('%s:%s' % (info['isy_username'], info['isy_' + 'password'])).encode('utf-8')\n    req = urllib.request.Request(url, headers={'Authorization': 'Basic ' + base64.b64encode(cred).decode('ascii')})\n    ctx = None\n    if scheme == 'https':\n        ctx = ssl.create_default_context()\n        ctx.check_hostname = False\n        ctx.verify_mode = ssl.CERT_NONE\n    with urllib.request.urlopen(req, timeout=timeout, context=ctx) as resp:\n        return resp.read().decode('utf-8', 'replace')\n\n\ndef time_values(now, sunrise=None, sunset=None):\n    \"\"\"Driver values for the Time node. Sun keys are only present when that time is known.\n\n    Minutes are truncated, e.g. 05:43:41 -> hour 5, minute 43.\n    \"\"\"\n    vals = {'ST': now.hour, 'MINUTE': now.minute}\n    if sunrise is not None:\n        vals['SUNRISE_HOUR'] = sunrise.hour\n        vals['SUNRISE_MIN'] = sunrise.minute\n    if sunset is not None:\n        vals['SUNSET_HOUR'] = sunset.hour\n        vals['SUNSET_MIN'] = sunset.minute\n    return vals\n\n\ndef sun_fetch_due(state, now_ts, today, has_hub_info):\n    \"\"\"Should a background read of the hub's sunrise/sunset start now?\"\"\"\n    if not has_hub_info or state.get('busy'):\n        return False\n    if state.get('date') == today:\n        return False\n    return now_ts - state.get('last_try', 0.0) >= SUN_RETRY_SECS\n\n\ndef sun_result(state, parsed, today, now_ts):\n    \"\"\"Record the outcome of one read attempt. Returns True when `parsed` has usable sun data.\n\n    A read that returns today's sunrise finishes the day. One that returns a different date\n    (the hub hasn't recalculated yet) is used but retried, up to SUN_MAX_ATTEMPTS times.\n    A failed read (no data) is simply retried after SUN_RETRY_SECS.\n    \"\"\"\n    state['busy'] = False\n    state['last_try'] = now_ts\n    if state.get('attempt_date') != today:\n        state['attempt_date'] = today\n        state['attempts'] = 0\n    if not parsed or not parsed.get('sunrise') or not parsed.get('sunset'):\n        return False\n    state['attempts'] = state.get('attempts', 0) + 1\n    sunrise = epoch_to_local(parsed['sunrise'], get_tz(parsed.get('tz')))\n    if sunrise.date() == today or state['attempts'] >= SUN_MAX_ATTEMPTS:\n        state['date'] = today\n    return True\n\n\n# ---------------------------------------------------------------------------\n# Driver definitions: the units this plugin declares are authoritative\n# ---------------------------------------------------------------------------\n# udi_interface.Node.__init__ copies each driver's value AND uom from the record Polyglot stored when\n# the node was first created over the class's declared drivers, and a later CONFIG event replaces a live\n# node's drivers with the stored ones again. A unit changed in the code would therefore never be reported\n# for an existing node. So (1) every node re-applies its declared uoms and every update passes uom=\n# explicitly, and (2) a node whose stored definition is out of date is removed and re-added once.\n\nNODE_DEFS_REV = 4           # bump when a node's driver ids/units change, to run the migration once more\nMIGRATION_FILE = 'node_defs.json'\nMIGRATION_WAIT_SECS = 30    # re-add a migrated node anyway if Polyglot hasn't confirmed its removal by then\n\n\ndef declared_uoms(cls):\n    \"\"\"{driver id: uom} exactly as the node class declares it (the class list is never mutated).\"\"\"\n    return {d['driver']: d['uom'] for d in cls.drivers}\n\n\ndef apply_declared_uoms(node):\n    \"\"\"Put the class-declared uom back on every driver of a node (undoing Node.__init__'s stored-uom copy).\"\"\"\n    decl = declared_uoms(type(node))\n    for d in node.drivers:\n        if d.get('driver') in decl:\n            d['uom'] = decl[d['driver']]\n\n\ndef push_drivers(node, info, force=True):\n    \"\"\"setDriver every declared driver that `info` has a value for, always with the declared uom.\n\n    force=True re-sends everything; force=False sends only what changed (value or uom).\n    \"\"\"\n    decl = declared_uoms(type(node))\n    for drv in list(node.drivers):\n        key = drv.get('driver')\n        if key in info:\n            node.setDriver(key, info[key], force=force, uom=decl.get(key))\n\n\ndef stored_defs_differ(stored, declared):\n    \"\"\"True if Polyglot's stored driver records don't match the declared drivers.\n\n    stored/declared are lists of {'driver', 'uom', ...}. Out of date means a stored driver the class no\n    longer declares, or a different uom for one it does. No stored record at all (a new node) or a\n    declared driver missing from the record is not out of date.\n    \"\"\"\n    if not stored:\n        return False\n    decl = {d['driver']: str(d['uom']) for d in declared}\n    for s in stored:\n        key = s.get('driver') if isinstance(s, dict) else None\n        if key is None:\n            continue\n        if key not in decl or str(s.get('uom')) != decl[key]:\n            return True\n    return False\n\n\ndef stale_addresses(stored_by_addr, declared_by_addr):\n    \"\"\"Addresses (sorted) whose stored record is out of date. Both args are {address: [driver dicts]}.\"\"\"\n    return sorted(a for a, declared in declared_by_addr.items()\n                  if stored_defs_differ(stored_by_addr.get(a), declared))\n\n\ndef read_node_defs_rev(path):\n    \"\"\"The NODE_DEFS_REV a previous run recorded in the marker file; 0 if missing or unreadable.\"\"\"\n    try:\n        with open(path) as f:\n            return int(json.load(f).get('rev', 0))\n    except Exception:\n        return 0\n\n\ndef write_node_defs_rev(path, rev):\n    \"\"\"Record the marker. Raises if it cannot be written (the caller then skips the migration).\"\"\"\n    os.makedirs(os.path.dirname(path), exist_ok=True)\n    with open(path, 'w') as f:\n        json.dump({'rev': int(rev)}, f)\n\n\ndef parse_patterns(raw):\n    \"\"\"Turn the customer's typed-params 'patterns' list into (patterns, errors).\n\n    Each pattern: {'label', 'occ' (1-4, 5=last), 'weekday' (0-6), 'month' (0=any, 1-12),\n    'address'}. Invalid entries are skipped and described in `errors`.\n    \"\"\"\n    if raw is None or raw == '':\n        return [], []\n    if isinstance(raw, dict):\n        raw = [raw]\n    if not isinstance(raw, (list, tuple)):\n        return [], ['The pattern list was not understood.']\n    patterns, errors, used = [], [], set()\n    for idx, item in enumerate(raw, start=1):\n        if not isinstance(item, dict):\n            errors.append('Pattern #%d is not valid.' % idx)\n            continue\n        label = str(item.get('label') or '').strip()\n        if not label:\n            errors.append('Pattern #%d has no name.' % idx)\n            continue\n        occ = parse_occurrence(item.get('occurrence'))\n        weekday = parse_weekday(item.get('weekday'))\n        month = parse_month(item.get('month'))\n        problems = []\n        if occ is None:\n            problems.append(\"occurrence '%s' (use first/second/third/fourth/last)\" % item.get('occurrence'))\n        if weekday is None:\n            problems.append(\"weekday '%s'\" % item.get('weekday'))\n        if month is None:\n            problems.append(\"month '%s' (use 'any', a month name, or 1-12)\" % item.get('month'))\n        if problems:\n            errors.append(\"Pattern '%s': unrecognized %s.\" % (label, '; '.join(problems)))\n            continue\n        slug = re.sub(r'[^a-z0-9]', '', label.lower())[:10] or 'pattern'\n        address = 'r_' + slug\n        i = 2\n        while address in used:\n            suffix = str(i)\n            address = ('r_' + slug)[:14 - len(suffix)] + suffix\n            i += 1\n        used.add(address)\n        patterns.append({'label': label, 'occ': occ, 'weekday': weekday,\n                         'month': month, 'address': address})\n    return patterns, errors\n"
+  },
+  "tests": {},
+  "custom_param_docs": null,
+  "custom_typed_params": [
+    {
+      "name": "southern_hemisphere",
+      "title": "Southern Hemisphere",
+      "type": "BOOLEAN",
+      "defaultValue": false,
+      "desc": "Check this if you live in the southern hemisphere, so the Season property is reported with the seasons reversed (December-February = Summer)."
+    },
+    {
+      "name": "patterns",
+      "title": "Weekday Patterns",
+      "isList": true,
+      "desc": "Each pattern becomes its own node, e.g. the 2nd Tuesday of every month or the 4th Thursday of November. Add, rename or remove patterns at any time; nodes are added or removed automatically.",
+      "params": [
+        {
+          "name": "label",
+          "title": "Pattern Name",
+          "type": "STRING",
+          "isRequired": true,
+          "desc": "Becomes the node name, e.g. Thanksgiving or Trash Pickup. Must be unique."
+        },
+        {
+          "name": "occurrence",
+          "title": "Which Occurrence",
+          "type": "STRING",
+          "defaultValue": "first",
+          "isRequired": true,
+          "desc": "first, second, third, fourth or last (1, 2, 3, 4 also accepted, as are 1st/2nd/3rd/4th)."
+        },
+        {
+          "name": "weekday",
+          "title": "Weekday",
+          "type": "STRING",
+          "defaultValue": "Monday",
+          "isRequired": true,
+          "desc": "Monday, Tuesday, Wednesday, Thursday, Friday, Saturday or Sunday (3-letter abbreviations also accepted)."
+        },
+        {
+          "name": "month",
+          "title": "Month",
+          "type": "STRING",
+          "defaultValue": "any",
+          "desc": "Leave as 'any' for every month, or give a month name (e.g. November) or number (1-12) to limit the pattern to that month."
+        }
+      ]
+    }
+  ],
+  "controller_class": "Controller",
+  "controller_module": "plugin",
+  "version": "1.14.0"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Calendar",
+  "status": "active",
+  "developer": "guy@lavoie.com",
+  "author": "Guy Lavoie",
+  "purchaseOptions": [],
+  "type": "python3",
+  "path": "/usr/home/eisy-ai/generated_plugins/calendar",
+  "executable": "main.py",
+  "runAs": "admin",
+  "install": "install.sh",
+  "desc": "Gregorian calendar information as nodes: Today, Tomorrow, Month Info, Weekday Instance (e.g. 2nd Wednesday of the month), Time (clock plus the hub's own sunrise and sunset), plus user-defined Nth-weekday pattern nodes (e.g. 2nd Tuesday of the month, last Friday of the month, 4th Thursday of November).",
+  "discover": true,
+  "isyAccess": true,
+  "requireEisyui": false,
+  "shortPoll": 10,
+  "longPoll": 300,
+  "nsid": "e1164159-aeef-430d-8289-29d17e8ce0e6"
+}

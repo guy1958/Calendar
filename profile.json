@@ -1,0 +1,576 @@
+{
+  "editors": [
+    {
+      "id": "cal_dow",
+      "ranges": [
+        {
+          "uom": "25",
+          "subset": "0,1,2,3,4,5,6",
+          "names": {
+            "0": "Monday",
+            "1": "Tuesday",
+            "2": "Wednesday",
+            "3": "Thursday",
+            "4": "Friday",
+            "5": "Saturday",
+            "6": "Sunday"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cal_yesno",
+      "ranges": [
+        {
+          "uom": "25",
+          "subset": "0,1",
+          "names": {
+            "0": "No",
+            "1": "Yes"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cal_oddeven",
+      "ranges": [
+        {
+          "uom": "25",
+          "subset": "0,1",
+          "names": {
+            "0": "Even",
+            "1": "Odd"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cal_season",
+      "ranges": [
+        {
+          "uom": "25",
+          "subset": "0,1,2,3",
+          "names": {
+            "0": "Winter",
+            "1": "Spring",
+            "2": "Summer",
+            "3": "Fall"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cal_ordinal",
+      "ranges": [
+        {
+          "uom": "25",
+          "subset": "1,2,3,4,5",
+          "names": {
+            "1": "1st",
+            "2": "2nd",
+            "3": "3rd",
+            "4": "4th",
+            "5": "5th"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cal_dom",
+      "ranges": [
+        {
+          "uom": "9",
+          "min": 1,
+          "max": 31,
+          "step": 1,
+          "prec": 0
+        }
+      ]
+    },
+    {
+      "id": "cal_month",
+      "ranges": [
+        {
+          "uom": "47",
+          "min": 1,
+          "max": 12,
+          "step": 1,
+          "prec": 0
+        }
+      ]
+    },
+    {
+      "id": "cal_monthnum",
+      "ranges": [
+        {
+          "uom": "56",
+          "min": 1,
+          "max": 12,
+          "step": 1,
+          "prec": 0
+        }
+      ]
+    },
+    {
+      "id": "cal_year",
+      "ranges": [
+        {
+          "uom": "77",
+          "min": 1970,
+          "max": 2200,
+          "step": 1,
+          "prec": 0
+        }
+      ]
+    },
+    {
+      "id": "cal_doy",
+      "ranges": [
+        {
+          "uom": "56",
+          "min": 1,
+          "max": 366,
+          "step": 1,
+          "prec": 0
+        }
+      ]
+    },
+    {
+      "id": "cal_week",
+      "ranges": [
+        {
+          "uom": "56",
+          "min": 1,
+          "max": 53,
+          "step": 1,
+          "prec": 0
+        }
+      ]
+    },
+    {
+      "id": "cal_untildays",
+      "ranges": [
+        {
+          "uom": "56",
+          "min": 0,
+          "max": 4000,
+          "step": 1,
+          "prec": 0
+        }
+      ]
+    },
+    {
+      "id": "cal_daysleft",
+      "ranges": [
+        {
+          "uom": "56",
+          "min": 0,
+          "max": 366,
+          "step": 1,
+          "prec": 0
+        }
+      ]
+    },
+    {
+      "id": "cal_monthdays",
+      "ranges": [
+        {
+          "uom": "56",
+          "min": 28,
+          "max": 31,
+          "step": 1,
+          "prec": 0
+        }
+      ]
+    },
+    {
+      "id": "cal_clock_hour",
+      "ranges": [
+        {
+          "uom": "56",
+          "min": 0,
+          "max": 23,
+          "step": 1,
+          "prec": 0
+        }
+      ]
+    },
+    {
+      "id": "cal_clock_min",
+      "ranges": [
+        {
+          "uom": "56",
+          "min": 0,
+          "max": 59,
+          "step": 1,
+          "prec": 0
+        }
+      ]
+    },
+    {
+      "id": "ED_CONTROLLER_ST",
+      "ranges": [
+        {
+          "subset": "0,1",
+          "uom": "25",
+          "names": {
+            "0": "Not Connected",
+            "1": "Connected"
+          }
+        }
+      ]
+    }
+  ],
+  "nodedefs": [
+    {
+      "id": "controller",
+      "name": "Calendar",
+      "properties": [
+        {
+          "id": "ST",
+          "name": "Status",
+          "editor": "ED_CONTROLLER_ST"
+        }
+      ],
+      "cmds": {
+        "sends": [],
+        "accepts": [
+          {
+            "id": "DISCOVER",
+            "name": "Rebuild Nodes",
+            "native": "true"
+          },
+          {
+            "id": "QUERY",
+            "name": "Query",
+            "native": "true"
+          }
+        ]
+      },
+      "links": {
+        "ctl": [],
+        "rsp": []
+      }
+    },
+    {
+      "id": "caltoday",
+      "name": "Calendar Today",
+      "properties": [
+        {
+          "id": "ST",
+          "name": "Day of Week",
+          "editor": "cal_dow"
+        },
+        {
+          "id": "DAY_OF_MONTH",
+          "name": "Day of Month",
+          "editor": "cal_dom"
+        },
+        {
+          "id": "MONTH",
+          "name": "Month",
+          "editor": "cal_month"
+        },
+        {
+          "id": "MONTH_NUM",
+          "name": "Month Number",
+          "editor": "cal_monthnum"
+        },
+        {
+          "id": "YEAR",
+          "name": "Year",
+          "editor": "cal_year"
+        },
+        {
+          "id": "DAY_OF_YEAR",
+          "name": "Day of Year",
+          "editor": "cal_doy"
+        },
+        {
+          "id": "ISO_WEEK",
+          "name": "ISO Week Number",
+          "editor": "cal_week"
+        },
+        {
+          "id": "ISO_WEEK_PARITY",
+          "name": "ISO Week Odd/Even",
+          "editor": "cal_oddeven"
+        },
+        {
+          "id": "LAST_FULL_WEEK",
+          "name": "Last Full Mon-Fri Week",
+          "editor": "cal_yesno"
+        },
+        {
+          "id": "IS_WEEKEND",
+          "name": "Weekend",
+          "editor": "cal_yesno"
+        },
+        {
+          "id": "LEAP_YEAR",
+          "name": "Leap Year",
+          "editor": "cal_yesno"
+        },
+        {
+          "id": "SEASON",
+          "name": "Season",
+          "editor": "cal_season"
+        },
+        {
+          "id": "DAYS_LEFT_MONTH",
+          "name": "Days Left in Month",
+          "editor": "cal_daysleft"
+        },
+        {
+          "id": "DAYS_LEFT_YEAR",
+          "name": "Days Left in Year",
+          "editor": "cal_daysleft"
+        }
+      ],
+      "cmds": {
+        "sends": [],
+        "accepts": []
+      },
+      "links": {
+        "ctl": [],
+        "rsp": []
+      }
+    },
+    {
+      "id": "caltomorrow",
+      "name": "Calendar Tomorrow",
+      "properties": [
+        {
+          "id": "ST",
+          "name": "Day of Week",
+          "editor": "cal_dow"
+        },
+        {
+          "id": "DAY_OF_MONTH",
+          "name": "Day of Month",
+          "editor": "cal_dom"
+        },
+        {
+          "id": "MONTH",
+          "name": "Month",
+          "editor": "cal_month"
+        },
+        {
+          "id": "MONTH_NUM",
+          "name": "Month Number",
+          "editor": "cal_monthnum"
+        },
+        {
+          "id": "YEAR",
+          "name": "Year",
+          "editor": "cal_year"
+        },
+        {
+          "id": "DAY_OF_YEAR",
+          "name": "Day of Year",
+          "editor": "cal_doy"
+        },
+        {
+          "id": "ISO_WEEK",
+          "name": "ISO Week Number",
+          "editor": "cal_week"
+        },
+        {
+          "id": "LAST_FULL_WEEK",
+          "name": "Last Full Mon-Fri Week",
+          "editor": "cal_yesno"
+        },
+        {
+          "id": "IS_WEEKEND",
+          "name": "Weekend",
+          "editor": "cal_yesno"
+        },
+        {
+          "id": "LEAP_YEAR",
+          "name": "Leap Year",
+          "editor": "cal_yesno"
+        },
+        {
+          "id": "SEASON",
+          "name": "Season",
+          "editor": "cal_season"
+        }
+      ],
+      "cmds": {
+        "sends": [],
+        "accepts": []
+      },
+      "links": {
+        "ctl": [],
+        "rsp": []
+      }
+    },
+    {
+      "id": "calmonth",
+      "name": "Calendar Month Info",
+      "properties": [
+        {
+          "id": "ST",
+          "name": "Days in Month",
+          "editor": "cal_monthdays"
+        },
+        {
+          "id": "YEAR",
+          "name": "Current Year",
+          "editor": "cal_year"
+        },
+        {
+          "id": "FIRST_WEEKDAY",
+          "name": "First Day Weekday",
+          "editor": "cal_dow"
+        },
+        {
+          "id": "LAST_WEEKDAY",
+          "name": "Last Day Weekday",
+          "editor": "cal_dow"
+        },
+        {
+          "id": "IS_FIRST_DAY",
+          "name": "Today Is First Day of Month",
+          "editor": "cal_yesno"
+        },
+        {
+          "id": "IS_LAST_DAY",
+          "name": "Today Is Last Day of Month",
+          "editor": "cal_yesno"
+        },
+        {
+          "id": "IS_LAST_BUSDAY",
+          "name": "Today Is Last Business Day",
+          "editor": "cal_yesno"
+        }
+      ],
+      "cmds": {
+        "sends": [],
+        "accepts": []
+      },
+      "links": {
+        "ctl": [],
+        "rsp": []
+      }
+    },
+    {
+      "id": "calweekday",
+      "name": "Calendar Weekday Instance",
+      "properties": [
+        {
+          "id": "ST",
+          "name": "Instance in Month",
+          "editor": "cal_ordinal"
+        },
+        {
+          "id": "WEEKDAY",
+          "name": "Weekday",
+          "editor": "cal_dow"
+        },
+        {
+          "id": "IS_LAST_INST",
+          "name": "Last of Its Weekday This Month",
+          "editor": "cal_yesno"
+        }
+      ],
+      "cmds": {
+        "sends": [],
+        "accepts": []
+      },
+      "links": {
+        "ctl": [],
+        "rsp": []
+      }
+    },
+    {
+      "id": "caltime",
+      "name": "Calendar Time",
+      "properties": [
+        {
+          "id": "ST",
+          "name": "Hour",
+          "editor": "cal_clock_hour"
+        },
+        {
+          "id": "MINUTE",
+          "name": "Minute",
+          "editor": "cal_clock_min"
+        },
+        {
+          "id": "SUNRISE_HOUR",
+          "name": "Sunrise Hour",
+          "editor": "cal_clock_hour"
+        },
+        {
+          "id": "SUNRISE_MIN",
+          "name": "Sunrise Minute",
+          "editor": "cal_clock_min"
+        },
+        {
+          "id": "SUNSET_HOUR",
+          "name": "Sunset Hour",
+          "editor": "cal_clock_hour"
+        },
+        {
+          "id": "SUNSET_MIN",
+          "name": "Sunset Minute",
+          "editor": "cal_clock_min"
+        }
+      ],
+      "cmds": {
+        "sends": [],
+        "accepts": []
+      },
+      "links": {
+        "ctl": [],
+        "rsp": []
+      }
+    },
+    {
+      "id": "calrule",
+      "name": "Calendar Weekday Pattern",
+      "properties": [
+        {
+          "id": "ST",
+          "name": "Is Today",
+          "editor": "cal_yesno"
+        },
+        {
+          "id": "IS_TOMORROW",
+          "name": "Is Tomorrow",
+          "editor": "cal_yesno"
+        },
+        {
+          "id": "DAYS_UNTIL",
+          "name": "Days Until Next",
+          "editor": "cal_untildays"
+        },
+        {
+          "id": "NEXT_DAY",
+          "name": "Next Day of Month",
+          "editor": "cal_dom"
+        },
+        {
+          "id": "NEXT_MONTH",
+          "name": "Next Month",
+          "editor": "cal_month"
+        },
+        {
+          "id": "NEXT_YEAR",
+          "name": "Next Year",
+          "editor": "cal_year"
+        }
+      ],
+      "cmds": {
+        "sends": [],
+        "accepts": []
+      },
+      "links": {
+        "ctl": [],
+        "rsp": []
+      }
+    }
+  ],
+  "linkdefs": []
+}
