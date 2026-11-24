@@ -78,6 +78,7 @@ if __name__ == "__main__":
         with open(profile_path, "r", encoding="utf-8") as f:
             response = polyglot.updateJsonProfile(json.load(f), {"waitResponse": True})
             LOGGER.info("Profile update response: %s", response)
+        polyglot.updateProfile()
         Controller(polyglot, 'ctl', 'ctl', 'Calendar Controller')
         polyglot.ready()
         polyglot.runForever()

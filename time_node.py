@@ -19,6 +19,8 @@ class TimeNode(udi_interface.Node):
         {'driver': 'SUNRISE_MIN', 'value': 0, 'uom': 56},
         {'driver': 'SUNSET_HOUR', 'value': 0, 'uom': 56},
         {'driver': 'SUNSET_MIN', 'value': 0, 'uom': 56},
+        {'driver': 'GV1', 'value': 0, 'uom': 56},
+        {'driver': 'GV2', 'value': 0, 'uom': 56},
     ]
 
     def __init__(self, polyglot, primary, address, name):
@@ -32,7 +34,10 @@ class TimeNode(udi_interface.Node):
         now = cal_utils.now_in(tz)
         sunrise = cal_utils.epoch_to_local(self.sun['sunrise'], tz) if self.sun.get('sunrise') else None
         sunset = cal_utils.epoch_to_local(self.sun['sunset'], tz) if self.sun.get('sunset') else None
-        return cal_utils.time_values(now, sunrise, sunset)
+        vals = cal_utils.time_values(now, sunrise, sunset)
+        vals['GV1'] = int(__import__('time').time())
+        vals['GV2'] = (now.date() - __import__('datetime').date(1970, 1, 1)).days
+        return vals
 
     def _push(self, force):
         cal_utils.push_drivers(self, self._values(), force=force)
@@ -44,3 +49,19 @@ class TimeNode(udi_interface.Node):
     def tick(self):
         """Cheap periodic refresh: only values that changed are sent."""
         self._push(False)
+
+    def tick_seconds(self):
+        """Update Unix seconds and local epoch day without refreshing other drivers."""
+        import time
+        import datetime
+
+        tz = cal_utils.get_tz(self.sun.get('tz'))
+        local_today = cal_utils.now_in(tz).date()
+
+        self.setDriver('GV1', int(time.time()), force=False, uom=56)
+        self.setDriver(
+            'GV2',
+            (local_today - datetime.date(1970, 1, 1)).days,
+            force=False,
+            uom=56
+        )

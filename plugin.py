@@ -92,8 +92,42 @@ class Controller(udi_interface.Node):
         import cal_ctl
         cal_ctl.start(self)
 
+        if getattr(self, '_seconds_thread', None) is not None and self._seconds_thread.is_alive():
+            return
+
+        self._seconds_stop = threading.Event()
+        self._seconds_thread = threading.Thread(
+            target=self._seconds_worker,
+            name='CalendarSeconds',
+            daemon=True
+        )
+        self._seconds_thread.start()
+
+    def _seconds_worker(self):
+        import time
+        import cal_utils
+
+        stop = self._seconds_stop
+        while not stop.is_set():
+            try:
+                with cal_utils.LOCK:
+                    if getattr(self, '_cal_started', False):
+                        node = getattr(self, '_cal_nodes', {}).get('time')
+                        if node is not None:
+                            node.tick_seconds()
+            except Exception as ex:
+                LOGGER.error("Calendar seconds update failed: %s", ex)
+
+            delay = max(0.01, 1.0 - (time.time() % 1.0))
+            stop.wait(delay)
+
     def stop(self, *args, **kwargs):
         LOGGER.info("%s: stopping", self.name)
+        if hasattr(self, '_seconds_stop'):
+            self._seconds_stop.set()
+        if getattr(self, '_seconds_thread', None) is not None:
+            self._seconds_thread.join(timeout=2)
+        self._cal_started = False
 
     def discover(self, *args, **kwargs):
         import cal_ctl
