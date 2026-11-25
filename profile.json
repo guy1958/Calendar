@@ -219,6 +219,30 @@
           }
         }
       ]
+    },
+    {
+      "id": "cal_unix_time",
+      "ranges": [
+        {
+          "uom": "56",
+          "min": "0",
+          "max": "2147483647",
+          "step": "1",
+          "prec": "0"
+        }
+      ]
+    },
+    {
+      "id": "cal_epoch_day",
+      "ranges": [
+        {
+          "uom": "56",
+          "min": "0",
+          "max": "100000",
+          "step": "1",
+          "prec": "0"
+        }
+      ]
     }
   ],
   "nodedefs": [
@@ -516,6 +540,16 @@
           "id": "SUNSET_MIN",
           "name": "Sunset Minute",
           "editor": "cal_clock_min"
+        },
+        {
+          "id": "GV1",
+          "name": "Unix Time",
+          "editor": "cal_unix_time"
+        },
+        {
+          "id": "GV2",
+          "name": "Local Epoch Day",
+          "editor": "cal_epoch_day"
         }
       ],
       "cmds": {
