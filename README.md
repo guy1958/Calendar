@@ -8,7 +8,9 @@ Exposes information about the regular (Gregorian) calendar and the time of day a
 - **Calendar Tomorrow** -- the same date information for tomorrow (handy for "is tomorrow a weekend / the 1st?" in programs), including month number and last full Mon-Fri week.
 - **Calendar Month Info** -- days in the month (a plain number, e.g. `30`), current year, weekday of the first and last day, and flags for first day, last day and last business day (last Monday-Friday) of the month.
 - **Calendar Weekday Instance** -- which instance of today's weekday this is within the month (1st to 5th), the weekday itself, and whether it is the last of that weekday this month. For example, Wednesday November 11, 2026 is the 2nd Wednesday.
-- **Calendar Time** (node name **Time**) -- the current **Hour** (0-23) and **Minute**, plus the controller's own **Sunrise Hour / Sunrise Minute** and **Sunset Hour / Sunset Minute** for today (24-hour clock, local time). All of these are plain numbers with no unit label (for example `10`, not `10 Hour`), so they can be used directly in numeric comparisons in programs.
+- **Calendar Time** (node name **Time**) -- the current **Hour** (0-23) and **Minute**, plus the controller's own **Sunrise Hour / Sunrise Minute** and **Sunset.
+also includes **Unix Time** which is the number of seconds since Jan 1, 1970, and **Local Epoch Day** which is the number of days, also since Jan 1, 1970
+- Hour / Sunset Minute** for today (24-hour clock, local time). All of these are plain numbers with no unit label (for example `10`, not `10 Hour`), so they can be used directly in numeric comparisons in programs.
 - **Weekday Pattern nodes (Nth weekday)** -- one node per pattern you define, e.g. "2nd Tuesday of every month", "last Friday of the month" or "4th Thursday of November". Each node reports *Is Today*, *Is Tomorrow*, *Days Until Next* (a plain number, 0 on the day itself), and the date of the next occurrence (day, month, year).
 
 ## Configuration
